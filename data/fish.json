@@ -1,0 +1,5 @@
+[
+  {"id":"river_trout","name":"Truite de rivière","season":["printemps","été"],"time":["jour"],"weather":["clair"],"sell":45},
+  {"id":"lake_carp","name":"Carpe de lac","season":["été","automne"],"time":["nuit"],"weather":["pluie","clair"],"sell":65},
+  {"id":"glow_eel","name":"Anguille luminescente","season":["automne"],"time":["nuit"],"weather":["pluie"],"sell":95}
+]

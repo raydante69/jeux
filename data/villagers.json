@@ -1,0 +1,30 @@
+[
+  {
+    "id":"maire_leon",
+    "name":"Léon",
+    "role":"maire",
+    "schedule":{
+      "matin":"place_du_village",
+      "apres_midi":"mairie",
+      "soir":"taverne"
+    },
+    "dialogues":[
+      "Bienvenue à Valpré ! Prenez soin de la ferme.",
+      "La mairie organise des festivals chaque saison, restez à l'affût."
+    ]
+  },
+  {
+    "id":"marchande_amelie",
+    "name":"Amélie",
+    "role":"marchande",
+    "schedule":{
+      "matin":"boutique",
+      "apres_midi":"boutique",
+      "soir":"maison"
+    },
+    "dialogues":[
+      "Besoin de graines ? Je renouvelle mon stock chaque jour.",
+      "Les cultures aiment quand on les arrose tôt le matin."
+    ]
+  }
+]

@@ -1,257 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FPS Monster Game</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            overflow: hidden;
-            font-family: 'Arial', sans-serif;
-            background: #000;
-        }
-
-        #gameCanvas {
-            display: block;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        #ui {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 100;
-        }
-
-        #crosshair {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-        }
-
-        .crosshair-line {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        .crosshair-h {
-            width: 20px;
-            height: 2px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .crosshair-v {
-            width: 2px;
-            height: 20px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .crosshair-dot {
-            width: 4px;
-            height: 4px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-        }
-
-        #hud {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            color: white;
-            font-size: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-
-        #health {
-            margin-bottom: 10px;
-        }
-
-        #health-bar {
-            width: 200px;
-            height: 25px;
-            background: rgba(255, 0, 0, 0.3);
-            border: 2px solid white;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        #health-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff0000, #ff4444);
-            width: 100%;
-            transition: width 0.3s;
-        }
-
-        #ammo {
-            margin-top: 10px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        #weapon-info {
-            margin-top: 5px;
-            font-size: 18px;
-            color: #ffd700;
-        }
-
-        #score {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-
-        #instructions {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            pointer-events: all;
-        }
-
-        #instructions h2 {
-            margin-bottom: 20px;
-            color: #ffd700;
-        }
-
-        #instructions p {
-            margin: 10px 0;
-            line-height: 1.6;
-        }
-
-        #startButton {
-            margin-top: 20px;
-            padding: 15px 40px;
-            font-size: 18px;
-            background: #ffd700;
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        #startButton:hover {
-            background: #ffed4e;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        #game-over {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            pointer-events: all;
-        }
-
-        #game-over h1 {
-            color: #ff0000;
-            margin-bottom: 20px;
-            font-size: 48px;
-        }
-
-        #game-over p {
-            margin: 15px 0;
-            font-size: 24px;
-        }
-
-        #restartButton {
-            margin-top: 20px;
-            padding: 15px 40px;
-            font-size: 18px;
-            background: #ffd700;
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        #restartButton:hover {
-            background: #ffed4e;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Valpré - PC Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/ui.css">
 </head>
 <body>
-    <canvas id="gameCanvas"></canvas>
-
-    <div id="ui">
-        <div id="crosshair">
-            <div class="crosshair-line crosshair-h"></div>
-            <div class="crosshair-line crosshair-v"></div>
-            <div class="crosshair-line crosshair-dot"></div>
-        </div>
-
-        <div id="hud">
-            <div id="health">
-                <div id="health-bar">
-                    <div id="health-fill"></div>
-                </div>
-            </div>
-            <div id="ammo">MUNITIONS: <span id="ammo-count">30/90</span></div>
-            <div id="weapon-info">ARME: <span id="weapon-name">PISTOLET</span></div>
-        </div>
-
-        <div id="score">
-            SCORE: <span id="score-count">0</span>
-        </div>
-
-        <div id="instructions">
-            <h2>🎮 FPS MONSTER GAME 🎮</h2>
-            <p><strong>WASD</strong> - Déplacement</p>
-            <p><strong>Souris</strong> - Viser</p>
-            <p><strong>Clic Gauche</strong> - Tirer</p>
-            <p><strong>1, 2, 3</strong> - Changer d'arme</p>
-            <p><strong>R</strong> - Recharger</p>
-            <p><strong>Espace</strong> - Sauter</p>
-            <button id="startButton">COMMENCER LE JEU</button>
-        </div>
-
-        <div id="game-over" class="hidden">
-            <h1>GAME OVER</h1>
-            <p>Score Final: <span id="final-score">0</span></p>
-            <p>Monstres Tués: <span id="monsters-killed">0</span></p>
-            <button id="restartButton">REJOUER</button>
-        </div>
+  <div id="game-container">
+    <canvas id="game-canvas" width="960" height="540"></canvas>
+    <div id="hud" class="panel">
+      <div class="hud-section">
+        <span id="hud-day">Jour 1</span>
+        <span id="hud-time">06:00</span>
+      </div>
+      <div class="hud-section">
+        <span>Or : <span id="hud-gold">0</span>g</span>
+        <span>Énergie : <span id="hud-energy">100</span></span>
+      </div>
+      <div class="hud-section" id="hud-location">Ferme de Valpré</div>
     </div>
-
-    <script type="module" src="/game.js"></script>
+    <div id="toolbar" class="panel"></div>
+    <div id="inventory" class="panel hidden">
+      <h2>Inventaire</h2>
+      <div id="inventory-grid" class="grid"></div>
+      <h3>Coffre</h3>
+      <div id="chest-grid" class="grid"></div>
+    </div>
+    <div id="dialogue" class="panel hidden">
+      <div id="dialogue-content"></div>
+      <button id="dialogue-close">Fermer</button>
+    </div>
+    <div id="shop" class="panel hidden">
+      <h2>Boutique du village</h2>
+      <div class="shop-section">
+        <h3>Achats</h3>
+        <ul id="shop-buy-list"></ul>
+      </div>
+      <div class="shop-section">
+        <h3>Ventes</h3>
+        <ul id="shop-sell-list"></ul>
+      </div>
+      <button id="shop-close">Fermer</button>
+    </div>
+    <div id="pause" class="panel hidden">
+      <h2>Pause</h2>
+      <button id="pause-resume">Reprendre</button>
+      <button id="pause-sleep">Dormir</button>
+      <button id="pause-save">Sauvegarder</button>
+    </div>
+    <div id="notifications"></div>
+  </div>
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>

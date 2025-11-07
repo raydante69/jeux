@@ -1,0 +1,19 @@
+[
+  {"id":"wood","name":"Bois","type":"resource","sell":2},
+  {"id":"stone","name":"Pierre","type":"resource","sell":2},
+  {"id":"fiber","name":"Fibre","type":"resource","sell":1},
+  {"id":"parsnip_seed","name":"Graine de panais","type":"seed","sell":10,"crop":"parsnip"},
+  {"id":"strawberry_seed","name":"Graine de fraise","type":"seed","sell":50,"crop":"strawberry"},
+  {"id":"cauliflower_seed","name":"Graine de chou-fleur","type":"seed","sell":40,"crop":"cauliflower"},
+  {"id":"blueberry_seed","name":"Graine de myrtille","type":"seed","sell":40,"crop":"blueberry"},
+  {"id":"pumpkin_seed","name":"Graine de citrouille","type":"seed","sell":80,"crop":"pumpkin"},
+  {"id":"corn_seed","name":"Graine de maïs","type":"seed","sell":75,"crop":"corn"},
+  {"id":"watering_can","name":"Arrosoir","type":"tool"},
+  {"id":"hoe","name":"Houe","type":"tool"},
+  {"id":"axe","name":"Hache","type":"tool"},
+  {"id":"pickaxe","name":"Pioche","type":"tool"},
+  {"id":"scythe","name":"Faux","type":"tool"},
+  {"id":"slime_goop","name":"Gelée","type":"monster_loot","sell":5},
+  {"id":"bat_wing","name":"Aile de chauve-souris","type":"monster_loot","sell":15},
+  {"id":"geode","name":"Géode","type":"mineral","sell":50}
+]

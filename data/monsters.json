@@ -1,0 +1,5 @@
+[
+  {"id":"slime_green","name":"Gelée verte","hp":20,"damage":4,"loot":[{"id":"slime_goop","qty":[1,2]}]},
+  {"id":"bat_cave","name":"Chauve-souris des cavernes","hp":15,"damage":3,"loot":[{"id":"bat_wing","qty":[1,3]}]},
+  {"id":"golem_stone","name":"Golem de pierre","hp":35,"damage":6,"loot":[{"id":"stone","qty":[2,5]},{"id":"geode","qty":[0,1]}]}
+]

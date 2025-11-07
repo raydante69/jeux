@@ -1,0 +1,16 @@
+[
+  {
+    "id":"first_harvest",
+    "name":"Première récolte",
+    "description":"Récoltez 3 cultures mûres pour montrer votre talent agricole.",
+    "requirements":{"type":"harvest","target":3},
+    "reward":{"gold":150,"items":[{"id":"strawberry_seed","qty":2}]}
+  },
+  {
+    "id":"village_help",
+    "name":"Coup de main au village",
+    "description":"Livrez 10 bois à la mairie.",
+    "requirements":{"type":"deliver","item":"wood","qty":10},
+    "reward":{"gold":200}
+  }
+]

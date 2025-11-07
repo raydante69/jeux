@@ -1,0 +1,8 @@
+[
+  {"id":"parsnip","name":"Panais","season":["printemps"],"days":[2,2,2],"regrow":false,"buy":20,"sell":35},
+  {"id":"strawberry","name":"Fraise","season":["printemps"],"days":[3,2,2,2],"regrow":true,"buy":100,"sell":120},
+  {"id":"cauliflower","name":"Chou-fleur","season":["printemps"],"days":[4,3,3,3],"regrow":false,"buy":80,"sell":175},
+  {"id":"blueberry","name":"Myrtille","season":["été"],"days":[3,2,2],"regrow":true,"buy":80,"sell":110},
+  {"id":"pumpkin","name":"Citrouille","season":["automne"],"days":[5,4,4,3],"regrow":false,"buy":120,"sell":320},
+  {"id":"corn","name":"Maïs","season":["été","automne"],"days":[4,3,3],"regrow":true,"buy":150,"sell":180}
+]
